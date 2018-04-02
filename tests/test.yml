@@ -2,5 +2,5 @@
 - hosts: ct6vag
   remote_user: vagrant
   roles:
-    - oyj.nginx.centos6
+    - nginx_centos6
   sudo: yes

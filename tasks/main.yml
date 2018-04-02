@@ -1,5 +1,5 @@
 ---
-# tasks file for oyj.nginx.centos6
+# tasks file for nginx_centos6
 # I could find with "ansible all -m setup -a "filter=ansible_distribution*"
 - name: No centos 6? refuse
   fail: msg="Only CentOS {{ centos_version }} supported"
