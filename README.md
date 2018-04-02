@@ -52,10 +52,6 @@ Basic usage
          #- { role: ohyoungjooung2.nginx_centos6,nginx_cert_config: true } #Include TLS
          #- { role: ohyoungjooung2.nginx_centos6,os_update: true } #Include os update
 
-Including ssl supoort
-    - hosts: servers
-      roles:
-         - { role: ohyoungjooung2.nginx_centos6,nginx_cert_config: true }
 
    
 License
