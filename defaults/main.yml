@@ -12,6 +12,10 @@ os: centos
 centos_version: 6
 daemon_name: nginx
 
-#Nginx server name default is "localhost"
+#Nginx server name default is "ipv4 eth1"
 #server_name: "localhost"
 server_name: "{{ ansible_eth1.ipv4.address }}"
+
+vhost_enable: false
+
+
