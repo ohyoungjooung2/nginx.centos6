@@ -5,6 +5,7 @@
   fail: msg="Only CentOS {{ centos_version }} supported"
   when: ansible_distribution != 'CentOS' or ansible_distribution_major_version != '6'
 
+# selinux vagrant image is default is Enforcing and libselinux-python is necessary.
 - include: selinux.yml
 
 - name: Ensure nginx repo copied /etc/yum.repos.d directory
@@ -39,7 +40,7 @@
 #Nginx config file copy
 - name: Copy nginx.conf.j2 to {{ config_file }}
   template: 
-     src=templates/nginx.conf.j2
+     src=templates/default_nginx.conf.j2
      dest={{ config_file }}
   notify: restart nginx
 

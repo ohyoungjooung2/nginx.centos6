@@ -6,7 +6,7 @@
 
 - name: Copy nginx.conf ssl included to {{ config_file }}
   template:
-     src=templates/nginx.conf.ssl.j2
+     src=templates/default_nginx.conf.ssl.j2
      dest={{ config_file }}
   notify: restart nginx
 
