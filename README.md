@@ -1,6 +1,6 @@
 Role Name
 =========
-oyj.nginx.centos6
+nginx.centos6
 
 This role nginx support for only centos6 distros(CentOS6.x)
 
@@ -26,7 +26,7 @@ Including an example of how to use your role (for instance, with variables passe
     - hosts: servers
       roles:
          #- { role: username.rolename, x: 42 }
-         - { role: oyj.nginx_centos6 }
+         - { role: ohyoungjooung2.nginx_centos6 }
 
 License
 -------
@@ -37,4 +37,3 @@ Author Information
 ------------------
   
     - wnapdlf05@gmail.com
-
