@@ -46,11 +46,11 @@ Example Playbook
 ----------------
 
 Basic usage
-    - hosts: servers
-      roles:
-         - { role: ohyoungjooung2.nginx_centos6 } #Basic nginx 80 port
-         #- { role: ohyoungjooung2.nginx_centos6,nginx_cert_config: true } #Include TLS
-         #- { role: ohyoungjooung2.nginx_centos6,os_update: true } #Include os update
+      - hosts: servers
+        roles:
+           - { role: ohyoungjooung2.nginx_centos6 } #Basic nginx 80 port
+           #- { role: ohyoungjooung2.nginx_centos6,nginx_cert_config: true } #Include TLS
+           #- { role: ohyoungjooung2.nginx_centos6,os_update: true } #Include os update
 
 
    
