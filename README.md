@@ -30,9 +30,9 @@ defaults/main.yml
 vars/main.yml
 --------------
 
-  key_file: /etc/nginx/ssl/nginx.key #private tls key
-  cert_file: /etc/nginx/ssl/nginx.cert #private tls cert
-  config_file: /etc/nginx/conf.d/default.conf #default vhost
+  - key_file: /etc/nginx/ssl/nginx.key #private tls key
+  - cert_file: /etc/nginx/ssl/nginx.cert #private tls cert
+  - config_file: /etc/nginx/conf.d/default.conf #default vhost
 
 
   
