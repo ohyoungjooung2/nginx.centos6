@@ -23,6 +23,8 @@
     name: nginx
     #state: installed
     state: present
+  tags:
+    - nginx_installed
 
 #Nginx config file copy
 - name: Copy nginx.conf.j2 to {{ config_file }}
