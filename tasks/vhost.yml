@@ -9,7 +9,7 @@
     - vhost_dir
 
 - name: Create directory for vhost1
-  file: path={{ vhost1_html_dir }}
+  file: path={{ vhost1_html_dir }} state=directory
 
 - name: Template vhost directory copy to /etc/nginx/sites-available/
   template: 
