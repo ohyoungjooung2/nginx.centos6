@@ -28,6 +28,7 @@ http {
     #gzip  on;
 
     include /etc/nginx/conf.d/*.conf;
-    {% if vhost_enable %}
+    {% if   vhost_enable   %}
     include /etc/nginx/sites-enabled/*;
-    {% end %}
+    {% endif %}
+}
