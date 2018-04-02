@@ -26,6 +26,14 @@
   tags:
     - nginx_installed
 
+#Root /etc/nginx/ngins.conf
+- name: Copy root_nginx.conf.j2 to {{ root_config_file }}
+  template:
+     src=templates/root_nginx.conf.j2
+     dest={{ root_config_file }}
+  notify: restart nginx
+
+
 #Nginx config file copy
 - name: Copy nginx.conf.j2 to {{ config_file }}
   template: 
@@ -37,6 +45,8 @@
 - include: nginx_ssl.yml
   notify: restart nginx
   when: nginx_cert_config 
+  tags:
+    - notify_confirm
 
 - name: Ensure running of nginx
   service:
