@@ -37,7 +37,7 @@
   notify: restart nginx
 
 
-#Nginx config file copy
+#Nginx default config file copy
 - name: Copy nginx.conf.j2 to {{ config_file }}
   template: 
      src=templates/default_nginx.conf.j2

@@ -7,6 +7,7 @@ server {
        index index.html index.htm;
 
        server_name {{ server_name }} ;
+       access_log /var/log/nginx/{{ server_name }}-access_log main;
  
 
        location / {
