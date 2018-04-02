@@ -8,10 +8,18 @@
   tags:
     - vhost_dir
 
+- name: Create directory for vhost1
+  file: path={{ vhost1_html_dir }}
+
 - name: Template vhost directory copy to /etc/nginx/sites-available/
   template: 
     src=templates/vhost1_nginx.conf.j2 
     dest=/etc/nginx/sites-available/vhost1_nginx.conf
+
+- name: Copy vhost_index.html to {{ vhost1_html_dir }}
+  copy:
+    src=files/{{ vhost1_index_html }}
+    dest={{ vhost1_html_dir }}/index.html
 
 - name: Link /etc/nginx/sites-available/ to /etc/nginx/sites-enabled
   file: > 
