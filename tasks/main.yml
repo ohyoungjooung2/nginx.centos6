@@ -29,7 +29,7 @@
   tags:
     - nginx_installed
 
-#Root /etc/nginx/ngins.conf
+#Root /etc/nginx/nginx.conf
 - name: Copy root_nginx.conf.j2 to {{ root_config_file }}
   template:
      src=templates/root_nginx.conf.j2
@@ -38,7 +38,7 @@
 
 
 #Nginx default config file copy
-- name: Copy nginx.conf.j2 to {{ config_file }}
+- name: Copy default_nginx.conf.j2 to {{ config_file }}
   template: 
      src=templates/default_nginx.conf.j2
      dest={{ config_file }}
@@ -49,6 +49,12 @@
   when: nginx_cert_config 
   tags:
     - tlsadd
+
+# When vhost_enabled is true
+- include: vhost.yml
+  when: vhost_enable
+  tags:
+   - vhost
 
 - name: Ensure running of nginx
   service:
