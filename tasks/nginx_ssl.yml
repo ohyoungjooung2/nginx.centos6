@@ -2,7 +2,6 @@
 #SSL directory creation
 - name: Create directory for TLS certification
   file: path=/etc/nginx/ssl state=directory
-  notify: restart nginx
 
 - name: Copy nginx.conf ssl included to {{ config_file }}
   template:
