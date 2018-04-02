@@ -1,0 +1,21 @@
+---
+
+- name: Create directory for vhosting link 
+  file: path=/etc/nginx/sites-available/ state=directory
+
+- name: Create directory for sites-enabled
+  file: path=/etc/nginx/sites-enabled/ state=directory
+  tags:
+    - vhost_dir
+
+- name: Template vhost directory copy to /etc/nginx/sites-available/
+  template: 
+    src=templates/vhost1_nginx.conf.j2 
+    dest=/etc/nginx/sites-available/vhost1_nginx.conf
+
+- name: Link /etc/nginx/sites-available/ to /etc/nginx/sites-enabled
+  file: > 
+    dest=/etc/nginx/sites-enabled/vhost1_nginx.conf
+    src=/etc/nginx/sites-available/vhost1_nginx.conf
+    state=link
+  notify: restart nginx
