@@ -1,6 +1,6 @@
 Role Name
 =========
-nginx.centos6
+nginx_centos6
 
 This role nginx support for only centos6 distros(CentOS6.x)
 
