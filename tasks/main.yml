@@ -36,6 +36,12 @@
   notify: restart nginx
   when: nginx_cert_config 
 
+- name: Ensure running of nginx
+  service:
+   name: nginx
+   state: started
+   enabled: yes
+
 
 #- name: Ensure tzdata package is installed (Linux).
 #  package:
