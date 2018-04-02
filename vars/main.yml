@@ -7,3 +7,5 @@ root_config_file: /etc/nginx/nginx.conf
 vhost1_html_dir: /usr/share/nginx/vhost1
 vhost1_index_html: vhost1.index.html
 vhost1_log_dir: /var/log/nginx/vhost1
+vhost_src_dir: /etc/nginx/sites-available
+vhost_link_dir: /etc/nginx/sites-enabled
