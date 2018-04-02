@@ -45,13 +45,19 @@ Dependencies
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
+Basic usage
     - hosts: servers
       roles:
-         #- { role: username.rolename, x: 42 }
-         - { role: ohyoungjooung2.nginx_centos6 }
+         - { role: ohyoungjooung2.nginx_centos6 } #Basic nginx 80 port
+         #- { role: ohyoungjooung2.nginx_centos6,nginx_cert_config: true } #Include TLS
+         #- { role: ohyoungjooung2.nginx_centos6,os_update: true } #Include os update
 
+Including ssl supoort
+    - hosts: servers
+      roles:
+         - { role: ohyoungjooung2.nginx_centos6,nginx_cert_config: true }
+
+   
 License
 -------
     - MIT
