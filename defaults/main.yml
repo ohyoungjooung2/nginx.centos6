@@ -1,0 +1,16 @@
+---
+# defaults file for oyj.nginx.centos6
+#Os update?
+os_update: false
+
+#nginx_enabled: true
+
+#Personal TLS certificate?
+nginx_cert_config : false
+#os
+os: centos
+centos_version: 6
+daemon_name: nginx
+
+#Nginx server name default is "localhost"
+server_name: "localhost"

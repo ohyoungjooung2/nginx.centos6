@@ -1,0 +1,6 @@
+---
+# vars file for oyj.nginx.centos6
+key_file: /etc/nginx/ssl/nginx.key
+cert_file: /etc/nginx/ssl/nginx.cert
+config_file: /etc/nginx/conf.d/default.conf
+

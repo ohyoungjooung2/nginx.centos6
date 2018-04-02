@@ -1,0 +1,6 @@
+---
+# handlers file for oyj.nginx.centos6. restart nginx
+ - name: restart nginx
+   service:
+      name: nginx
+      state: restarted

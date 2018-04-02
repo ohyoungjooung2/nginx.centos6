@@ -1,0 +1,92 @@
+---
+# tasks file for oyj.nginx.centos6
+# I could find with "ansible all -m setup -a "filter=ansible_distribution*"
+- name: No centos 6? refuse
+  fail: msg="Only CentOS {{ centos_version }} supported"
+  when: ansible_distribution != 'CentOS' or ansible_distribution_major_version != '6'
+
+- name: Ensure nginx repo copied /etc/yum.repos.d directory
+  template:
+    src: templates/nginx.repo.j2
+    dest: /etc/yum.repos.d/nginx.repo
+
+# Repo update. Default is false.
+- name: yum update latest?
+  yum:
+    name: '*'
+    state: latest
+  when: os_update 
+
+#Yum install nginx
+- name: Ensure nginx install
+  yum:
+    name: nginx
+    #state: installed
+    state: present
+
+#Nginx config file copy
+- name: Copy nginx.conf.j2 to {{ config_file }}
+  template: 
+     src=templates/nginx.conf.j2
+     dest={{ config_file }}
+  notify: restart nginx
+
+# When nginx_cert_config is true
+- include: nginx_ssl.yml
+  notify: restart nginx
+  when: nginx_cert_config 
+
+
+#- name: Ensure tzdata package is installed (Linux).
+#  package:
+#    name: tzdata
+#    state: present
+#  when: ansible_system == "Linux"
+#
+#- name: Ensure ntpstat package is installed (Debian).
+#  package:
+#    name: ntpstat
+#    state: present
+#  when: ansible_os_family == "Debian"
+#
+#- name: Ensure libselinux-python is installed
+#  package:
+#    name: libselinux-python
+#    state: present
+#  when: ansible_os_family == 'RedHat'
+#
+##CentOS7 use chronyd as default time daemon. Anyhow when you want to use ntpd, you have to disable chronyd.
+#- name: Ensure chronyd stopd when Centos7 is ths os
+#  service:
+#    name: chronyd
+#    state: stopped
+#    enabled: no
+#  when: ansible_os_family == 'RedHat' and ansible_distribution_version.split('.')[0] == '7'
+#
+#- include: clock-rhel-6.yml
+#  when: ansible_os_family == 'RedHat' and ansible_distribution_version.split('.')[0] == '6'
+#
+#- name: Set timezone
+#  timezone:
+#    name: "{{ ntp_timezone }}"
+#
+#- name: Ensure NTP is running and enabled as configured.
+#  service:
+#    name: "{{ ntp_daemon }}"
+#    state: started
+#    enabled: yes
+#  when: ntp_enabled
+#
+#- name: Ensure NTP is stopped and disabled as configured.
+#  service:
+#    name: "{{ ntp_daemon }}"
+#    state: stopped
+#    enabled: no
+#  when: not ntp_enabled
+#
+#- name: Generate ntp.conf file
+#  template:
+#    src: ntp.conf.j2
+#    dest: /etc/ntp.conf
+#  notify: restart ntp
+#  when: ntp_manage_config
