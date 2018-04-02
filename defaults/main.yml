@@ -16,4 +16,4 @@ daemon_name: nginx
 #server_name: "localhost"
 server_name: "{{ ansible_eth1.ipv4.address }}"
 
-vhost_enable: true
+vhost_enable: false

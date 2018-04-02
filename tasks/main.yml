@@ -53,8 +53,6 @@
 # When vhost_enabled is true
 - include: vhost.yml
   when: vhost_enable
-  tags:
-   - vhost
 
 - name: Ensure running of nginx
   service:

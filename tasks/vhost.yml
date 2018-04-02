@@ -11,6 +11,9 @@
 - name: Create directory for vhost1
   file: path={{ vhost1_html_dir }} state=directory
 
+- name: Create log directory for vhost1
+  file: path={{ vhost1_log_dir }} state=directory
+
 - name: Template vhost directory copy to /etc/nginx/sites-available/
   template: 
     src=templates/vhost1_nginx.conf.j2 

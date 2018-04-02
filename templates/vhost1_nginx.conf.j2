@@ -1,16 +1,15 @@
 server {
-       listen 81 default_server;
-       listen [::]:81 default_server ipv6only=on;
+       listen 81;
 
- 
-       root {{ vhost1_html_dir }};
-       index index.html index.htm;
-       #Testing ip address
        server_name {{ server_name }} ;
-       access_log /var/log/nginx/{{ server_name }}-access_log main;
+ 
  
 
        location / {
+              root {{ vhost1_html_dir }};
+              index index.html index.htm;
+              access_log {{ vhost1_log_dir }}/vhost-access_log main;
+              error_log {{ vhost1_log_dir }}/vhost-error_log;
 
                 try_files $uri $uri/ =404;
        }
