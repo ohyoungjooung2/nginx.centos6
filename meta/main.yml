@@ -6,7 +6,7 @@ galaxy_info:
 
   license: MIT
 
-  min_ansible_version: 2.5(only 2.5 tested)
+  min_ansible_version: 2.5
 
   # platforms is a list of platforms, and each platform has a name and a list of versions.
   #
