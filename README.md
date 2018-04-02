@@ -26,7 +26,8 @@ defaults/main.yml
     daemon_name: nginx #nginx daemon_name
   
     server_name: "localhost" #cloud be changed for your domain or ip by setting --extra-vars
-
+ 
+    vhost_enable: false #true to use vhost sites-available sites-enable link mechanism
 vars/main.yml
 --------------
 
