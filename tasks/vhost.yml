@@ -1,10 +1,11 @@
 ---
 
+#vhost related
 - name: Create directory for vhosting link 
-  file: path=/etc/nginx/sites-available/ state=directory
+  file: path={{ vhost_src_dir }} state=directory
 
 - name: Create directory for sites-enabled
-  file: path=/etc/nginx/sites-enabled/ state=directory
+  file: path={{ vhost_link_dir }} state=directory
   tags:
     - vhost_dir
 
@@ -17,7 +18,7 @@
 - name: Template vhost directory copy to /etc/nginx/sites-available/
   template: 
     src=templates/vhost1_nginx.conf.j2 
-    dest=/etc/nginx/sites-available/vhost1_nginx.conf
+    dest={{ vhost_src_dir}}/vhost1_nginx.conf
 
 - name: Copy vhost_index.html to {{ vhost1_html_dir }}
   copy:
@@ -26,7 +27,7 @@
 
 - name: Link /etc/nginx/sites-available/ to /etc/nginx/sites-enabled
   file: > 
-    dest=/etc/nginx/sites-enabled/vhost1_nginx.conf
-    src=/etc/nginx/sites-available/vhost1_nginx.conf
+    dest={{ vhost_link_dir}}/vhost1_nginx.conf
+    src={{ vhost_src_dir}}/vhost1_nginx.conf
     state=link
   notify: restart nginx
