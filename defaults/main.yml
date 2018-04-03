@@ -16,4 +16,29 @@ daemon_name: nginx
 #server_name: "localhost"
 server_name: "{{ ansible_eth1.ipv4.address }}"
 
-vhost_enable: false
+#Name based vhost begin(default:false)
+name_vhost_enable: false
+
+#name based virtual host domains
+vhost_template: "vhost_template.j2"
+vhosts:
+  - {
+      listen: "80",
+      name: app.corp,
+      root: "/usr/share/nginx/app.corp/static",
+      index: "index.html index.html",
+      filename: "app.corp.conf",
+      access_log_dir: "/usr/share/nginx/app.corp/logs",
+      error_log_dir: "/usr/share/nginx/app.corp/logs",
+    } 
+
+  - {
+      listen: "80",
+      name: "media.corp",
+      root: "/usr/share/nginx/media.corp/static",
+      index: "index.html index.html",
+      filename: "media.corp.conf",
+      access_log_dir: "/usr/share/nginx/media.corp/logs",
+      error_log_dir: "/usr/share/nginx/media.corp/logs",
+      
+    }

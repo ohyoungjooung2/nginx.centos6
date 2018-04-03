@@ -51,8 +51,8 @@
     - tlsadd
 
 # When vhost_enabled is true
-- include: vhost.yml
-  when: vhost_enable
+- include: nvhost.yml
+  when: nvhost_enable
 
 - name: Ensure running of nginx
   service:

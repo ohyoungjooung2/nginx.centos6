@@ -3,7 +3,7 @@
   remote_user: vagrant
   roles:
     #- { role: nginx_centos6 } #Basic nginx 80 port
-    - { role: nginx_centos6, nginx_cert_config: true, vhost_enable: true } #Include TLS and vhost enable test
+    - { role: nginx_centos6, nginx_cert_config: true, name_vhost_enable: true } #Include TLS and vhost enable test
     #- { role: ohyoungjooung2.nginx_centos6,os_update: true } #Include os update
 
   sudo: yes
