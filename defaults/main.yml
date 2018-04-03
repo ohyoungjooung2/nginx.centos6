@@ -1,5 +1,5 @@
 ---
-# defaults file for nginx_centos6
+# defaults file for ohyoungjooung2.nginx_centos6
 #Os update?
 os_update: false
 
