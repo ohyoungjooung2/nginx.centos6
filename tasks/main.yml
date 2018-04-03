@@ -52,7 +52,7 @@
 
 # When vhost_enabled is true
 - include: nvhost.yml
-  when: nvhost_enable
+  when: name_vhost_enable
 
 - name: Ensure running of nginx
   service:
