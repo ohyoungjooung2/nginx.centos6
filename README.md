@@ -25,9 +25,29 @@ defaults/main.yml
   
     daemon_name: nginx #nginx daemon_name
   
-    server_name: "localhost" #cloud be changed for your domain or ip by setting --extra-vars
+    server_name: "{{ ansible_eth1_ipv4.address }} " #cloud be changed for your domain or ip by setting --extra-vars. Private zone ip address
  
-    vhost_enable: false #true to use vhost sites-available sites-enable link mechanism
+    name_vhost_enable: false #true to use name based virtual host sites-available sites-enable link mechanism
+
+    proxy_balancer_enable: false
+
+    proxy_balancer_method: ip_hash
+   
+    group_name: app
+    
+    max_fails: 3
+   
+    fail_timeout: 30s
+    
+    backend_port: 8080
+    
+    backend_server:
+      - 10.0.0.100
+      - 10.0.0.101
+
+
+
+    
 vars/main.yml
 --------------
 
