@@ -11,6 +11,7 @@ events {
 
 
 http {
+
     include       /etc/nginx/mime.types;
     default_type  application/octet-stream;
 
@@ -27,8 +28,29 @@ http {
 
     #gzip  on;
 
-    include /etc/nginx/conf.d/*.conf;
+
+    #If proxy based balncer is enabled
+    {% if proxy_balancer_enable is defined %}
+
+    upstream {{ group_name }} {
+        {{ proxy_balancer_method }};
+        {% for server in backend_server %}
+        server  {{ server }}:8080 max_fails={{ max_fails }} fail_timeout={{ fail_timeout }};
+        {% endfor %}
+     }
+
+    server {
+            listen 80;
+            location / {
+                proxy_pass http://{{ group_name }};
+            }
+    }
+    {% else %}
+
+include /etc/nginx/conf.d/*.conf;
+
+    {% endif %}
     {% if   name_vhost_enable is defined   %}
-    include /etc/nginx/sites-enabled/*;
+include /etc/nginx/sites-enabled/*;
     {% endif %}
 }

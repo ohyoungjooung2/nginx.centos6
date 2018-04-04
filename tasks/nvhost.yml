@@ -7,7 +7,7 @@
 - name: Create directory for sites-enabled
   file: path={{ vhost_link_dir }} state=directory
   tags:
-    - vhost_dir
+    - vhost_dir_make
 
 - name: Create directory for vhosts
   file: path={{ item.root }} state=directory
@@ -35,5 +35,8 @@
     src={{ vhost_src_dir}}/{{ item.filename }}
     state=link
   with_items: "{{ vhosts }}"
+  tags:
+     link_complete
+  
 
   notify: restart nginx
