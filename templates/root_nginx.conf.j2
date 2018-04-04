@@ -30,7 +30,7 @@ http {
 
 
     #If proxy based balncer is enabled
-    {% if proxy_balancer_enable is defined %}
+    {% if proxy_balancer_enable %}
 
     upstream {{ group_name }} {
         {{ proxy_balancer_method }};
@@ -47,10 +47,11 @@ http {
     }
     {% else %}
 
-include /etc/nginx/conf.d/*.conf;
+    include /etc/nginx/conf.d/*.conf;
 
     {% endif %}
-    {% if   name_vhost_enable is defined   %}
+
+    {% if   name_vhost_enable  %}
 include /etc/nginx/sites-enabled/*;
     {% endif %}
 }
