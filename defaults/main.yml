@@ -53,3 +53,4 @@ backend_port: 8080
 backend_server:
       - 10.0.0.5
       - 10.0.0.6
+redirect_ssl: false
