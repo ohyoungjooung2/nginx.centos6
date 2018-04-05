@@ -46,10 +46,10 @@ vhosts:
 #Load balancer
 proxy_balancer_enable: false
 proxy_balancer_method: ip_hash
-group_name: app
+group_name: "{{ ansible_eth1.ipv4.address }}"
 max_fails: 3
 fail_timeout: 30s
 backend_port: 8080
 backend_server:
-      - 10.0.0.100
-      - 10.0.0.101
+      - 10.0.0.5
+      - 10.0.0.6

@@ -41,10 +41,27 @@ http {
 
     server {
             listen 80;
+            server_name {{ server_name }};
             location / {
                 proxy_pass http://{{ group_name }};
             }
     }
+
+    
+    server {
+
+            listen 443 ssl;
+            server_name {{ server_name }};
+            ssl on;
+            ssl_certificate {{ cert_file }} ;
+            ssl_certificate_key {{ key_file }} ;
+
+            location / {
+                proxy_pass http://{{ group_name }};
+                #proxy_pass https://{{ group_name }};
+            }
+    }
+
     {% else %}
 
     include /etc/nginx/conf.d/*.conf;

@@ -46,7 +46,7 @@
 
 # When nginx_cert_config is true
 - include: nginx_ssl.yml
-  when: nginx_cert_config 
+  when: nginx_cert_config  or proxy_balancer_enable
   tags:
     - tlsadd
 
