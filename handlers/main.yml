@@ -4,3 +4,8 @@
    service:
       name: nginx
       state: restarted
+ 
+ - name: restart firewall
+   service: 
+      name: firewall
+      state: restarted
