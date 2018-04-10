@@ -85,7 +85,7 @@ Example Playbook
                #- { role: ohyoungjooung2.nginx_centos6,proxy_balancer_enabled: true } #Include os update
                #- { role: ohyoungjooung2.nginx_centos6,name_vhost_enable: true } #Include vhost
                #- { role: ohyoungjooung2.nginx_centos6,name_vhost_enable: true,redirect_ssl } #all 80 to 443 ssl
-               #- { role: ohyoungjooung2.nginx_centos6,name_vhost_enable: true,production_on: true #all firewall on
+               #- { role: ohyoungjooung2.nginx_centos6,name_vhost_enable: true,production_on: true } #all firewall on
 
 
    
